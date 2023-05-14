@@ -1,9 +1,14 @@
-using System;
+namespace Develope02;
 
-class Entry
-{
-    static void Main(string[] args)
+    public class Entry
     {
-        Console.WriteLine("Hello Develop03 World!");
+        public void EntryValues(){
+        DateTime date = DateTime.Now;
+        PromptGen promptGen = new PromptGen();
+        string prompt = promptGen.getPrompt();
+        Console.WriteLine(prompt);
+        
+        }
+
+
     }
-}
