@@ -1,32 +1,64 @@
 namespace Develope02;
+using System.IO;
 
     class Journal
     {
         PromptGen promptgen = new PromptGen();
-        Entry entry = new Entry();
-        public List<string> entries = new List<string>{
-            ""
-        };
+        List<Entry> entries = new List<Entry>();
+        
 
-        public void AddEntry() {
-            entry.EntryValues();
+        public void AddEntry() 
+        {
+            string prompt = promptgen.getPrompt();
+            Console.WriteLine(prompt);
             string userentry = Console.ReadLine();
-            entries.Add(Date, prompt, userentry);
-            entries.Add(userentry);
+            Entry entry = new Entry();
+            entry.date = DateTime.Now.ToString();
+            entry.prompt = prompt;
+            entry.response = userentry; 
+            entries.Add(entry);
             
         }
 
-        public void Display(){
-            Console.WriteLine(entries);
-        }
-
-        public void load(string filename){
+        public void Display()
+        {
+            foreach (Entry entry in entries){
+                entry.display();
+            }
             
         }
 
-        public void save(List<Entry> entries, string filename){
-            System.IO.File.WriteAllLines(filename, entries.ToList());
-            
+        public void load(string file)
+        {
+            string filename = file;
+            string[] lines = System.IO.File.ReadAllLines(filename);
+
+            foreach (string line in lines)
+            {
+                Entry entry = new Entry();
+                string[] parts = line.Split("~");
+                string date = parts[0];
+                string prompt = parts[1];
+                string response = parts[2];
+                entry.date = date;
+                entry.prompt = prompt;
+                entry.response = response;
+                entries.Add(entry);
+
+            }
+        }
+
+        public void save(string file)
+        {
+            string fileName = file;
+
+            using (StreamWriter outputFile = new StreamWriter(fileName))
+            {
+                foreach (Entry entry in entries)
+                {
+                    outputFile.WriteLine($"{entry.date}~{entry.prompt}~{entry.response}");
+                }
+            }
 
         }
     }

@@ -2,13 +2,14 @@ namespace Develope02;
 
     public class Entry
     {
-        public void EntryValues(){
-        DateTime date = DateTime.Now;
-        PromptGen promptGen = new PromptGen();
-        string prompt = promptGen.getPrompt();
-        Console.WriteLine(prompt);
+        public string date = DateTime.Now.ToString();
+        public string prompt = "";
+        public string response = "";
         
+        public void display(){
+            Console.WriteLine(date);
+            Console.WriteLine(prompt);
+            Console.WriteLine(response);
         }
-
-
     }
+
