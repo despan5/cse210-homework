@@ -1,30 +1,59 @@
+//class to do the main "meat" of the program including displaying,
+//setting the visibility, and displaying the reference.
 namespace Develope03;
-    
-    public class Scripture
+    class Scripture
     {
-        Reference reference = new Reference();
-        List<Words> words = new List<Words>();
-        int wordsToHide = 0;
-        public bool isFinished(){
-            //decides whether all of the words are gone or not
-            bool finish = true;
-            return finish;
+        //attributes.
+        private Random random = new Random();
+        private Word[] words;
+        private Reference reference;
+
+        public bool AllWordsHidden => words.All(word => word.Hidden);
+        public int WordsRemaining => words.Count(word => !word.Hidden);
+
+        public Scripture(Reference reference, string text)
+        {
+            this.reference = reference;
+
+            string[] wordStrings = text.Split(' ');
+            words = new Word[wordStrings.Length];
+
+            for (int i = 0; i < wordStrings.Length; i++)
+            {
+                words[i] = new Word(wordStrings[i]);
+            }
         }
 
-        public void parseScripture(string scripture){
-            //iterates through the full scripture verse
-
+        //method to display the scripture with hidden words.
+        public void Display()
+        {
+            foreach (Word word in words)
+            {
+                Console.Write(word.Hidden ? "_ " : word.Text + " ");
+            }
+            Console.WriteLine();
+            Console.WriteLine();
         }
 
-        public string display(string scripture, Reference reference, int wordsToHide){
-            //displays the verse with the reference and the right number of words hidden
-            string fullVerse = scripture + reference + wordsToHide;
-            return fullVerse;
+        //method that sets random words to be hidden.
+        public void SetVisibility(int count)
+        {
+
+            for (int i = 0; i < count; i++)
+            {
+                Word randomWord;
+                do
+                {
+                    randomWord = words[random.Next(words.Length)];
+                } while (randomWord.Hidden);
+
+                randomWord.setIsVisible();
+            }
         }
 
-        public void setVisibility(){
-            //makes certain words visible or not
-
+        //method to display the scripture reference.
+        public void DisplayReference()
+        {
+            Console.WriteLine(reference.ToString());
         }
-
     }
