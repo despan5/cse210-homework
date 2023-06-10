@@ -1,9 +1,13 @@
-using System;
+using Develope04;
 
 class Program
 {
-    static void Main(string[] args)
+    static void Main()
     {
-        Console.WriteLine("Hello Develop04 World!");
+        Console.Clear();
+        Console.WriteLine("Welcome to the Mindfulness Program!");
+
+        Menu menu = new Menu();
+        menu.DisplayMenu();
     }
 }
