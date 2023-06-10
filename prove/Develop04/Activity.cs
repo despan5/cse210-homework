@@ -4,20 +4,20 @@ abstract class Activity
 {
     public Random random = new Random();
 
-    public string Name { get; protected set; }
-    public string Description { get; protected set; }
+    public string _name { get; protected set; }
+    public string _description { get; protected set; }
 
     public Activity(string name, string description)
     {
-        Name = name;
-        Description = description;
+        _name = name;
+        _description = description;
     }
     public void StartActivity()
     {
         DisplaySpinner(2000);
         Console.Clear();
-        Console.WriteLine($"\n*** {Name} ***");
-        Console.WriteLine(Description);
+        Console.WriteLine($"\n*** {_name} ***");
+        Console.WriteLine(_description);
 
         int duration = GetDuration();
 
@@ -27,7 +27,7 @@ abstract class Activity
 
         RunActivity(duration);
 
-        Console.WriteLine($"Well done! You have completed the {Name.ToLower()} for {duration} seconds.");
+        Console.WriteLine($"Well done! You have completed the {_name.ToLower()} for {duration} seconds.");
         DisplaySpinner(5000);
     }
 

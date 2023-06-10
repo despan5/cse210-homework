@@ -21,7 +21,7 @@ class Menu
             Console.WriteLine("\nPlease choose an activity:");
             for (int i = 0; i < activities.Length; i++)
             {
-                Console.WriteLine($"{i + 1}. {activities[i].Name}");
+                Console.WriteLine($"{i + 1}. {activities[i]._name}");
             }
             Console.WriteLine($"{activities.Length + 1}. Exit");
 
