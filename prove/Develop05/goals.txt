@@ -1,0 +1,5 @@
+1
+100
+SimpleGoal,talk,give a talk about repentance,0,False
+EternalGoal,hugs,give 2 hugs every day,20,False
+ChecklistGoal,clean the house 3 weeks in a row,clean,100,False
