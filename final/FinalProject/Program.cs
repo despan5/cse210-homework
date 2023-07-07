@@ -1,9 +1,22 @@
+namespace FinalProject;
 using System;
+using System.Collections.Generic;
+using System.Net.Http;
+using System.Threading.Tasks;
+using System.Text.Json;
 
-class Program
+
+// Main entry point of the program
+public class Program
 {
-    static void Main(string[] args)
+    public static async Task Main(string[] args)
     {
-        Console.WriteLine("Hello FinalProject World!");
+        string apiKey = "4e316287cda887a206cb0fcf940dfbd5";
+
+        // Create an instance of WeatherApp and provide the API key
+        WeatherApp weatherApp = new WeatherApp(apiKey);
+
+        // Run the WeatherApp
+        await weatherApp.Run();
     }
 }
