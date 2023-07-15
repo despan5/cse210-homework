@@ -1,15 +1,5 @@
 namespace FinalProject;
-
-// Forecast class
-public abstract class Forecast
+public class Forecast
 {
-    protected WeatherApp weatherApp;
-
-    public Forecast(WeatherApp weatherApp)
-    {
-        this.weatherApp = weatherApp;
-    }
-
-    public abstract Task Display();
+    public ForecastDay[] forecastday { get; set; }
 }
-
